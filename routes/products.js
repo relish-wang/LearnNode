@@ -127,10 +127,21 @@ var products = [
 router.get('/', function (req, res, next) {
     res.send(JSON.stringify(products));
 });
+
 // 新建商品接口
 router.post('/', function (req, res, next) {
     products = products.concat(req.body)
     res.send(JSON.stringify(products));
+});
+
+// 更新商品接口
+router.put('/:id', function (req, res, next) {
+   for (var i = 0; i < products.length; i++) {
+       if (products[i].id === parseInt(req.params.id)){
+           products[i] = req.body;
+       }
+   }
+   res.send(JSON.stringify(products));
 });
 
 module.exports = router;
