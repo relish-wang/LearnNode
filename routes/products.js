@@ -120,19 +120,16 @@ var products = [
         image: './images/product-image-15.jpg',
         title: '标致508',
         subTitle: '2015款 标致508 1.6THP 自动致逸天窗版'
-    },
-    {
-        id: 16,
-        link: 'https://www.tangeche.com/detail.html?modelCode=200634&brandCode=brand-121&seriesCode=series-317',
-        url: 'https://f.souche.com/49147e43abd2930a4b833778abd12fcc.jpg',
-        image: './images/product-image-16.jpg',
-        title: '天籁',
-        subTitle: '2016款 天籁 2.0L XE时尚真皮版'
     }
 ];
 
-/* GET users listing. */
+// 获取商品接口
 router.get('/', function (req, res, next) {
+    res.send(JSON.stringify(products));
+});
+// 新建商品接口
+router.post('/', function (req, res, next) {
+    products = products.concat(req.body)
     res.send(JSON.stringify(products));
 });
 
