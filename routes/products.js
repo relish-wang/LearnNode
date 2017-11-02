@@ -136,12 +136,24 @@ router.post('/', function (req, res, next) {
 
 // 更新商品接口
 router.put('/:id', function (req, res, next) {
-   for (var i = 0; i < products.length; i++) {
-       if (products[i].id === parseInt(req.params.id)){
-           products[i] = req.body;
-       }
-   }
-   res.send(JSON.stringify(products));
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === parseInt(req.params.id)) {
+            products[i] = req.body;
+            break;
+        }
+    }
+    res.send(JSON.stringify(products));
+});
+
+// 删除商品接口
+router.delete('/:id', function (req, res, next) {
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === parseInt(req.params.id)) {
+            products.splice(i, 1);
+            break;
+        }
+    }
+    res.send("Success!");
 });
 
 module.exports = router;
